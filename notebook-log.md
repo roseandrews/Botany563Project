@@ -1,9 +1,5 @@
 I am going to work with several species from the Cupressaceae family: Calocedrus decurrens, Sequoia sempervirens, Hesperocyparis abramsiana, Hesperocyparis forbesii, Hesperocyparis macnabiana, Juniperus occidentalis, and Juniperus osteosperma. Available sequences of chloroplast DNA (trn V intron, trn L–trn F, trn K–mat K) will be obtained from GenBank. 
 ---
-layout: default
-nav_exclude: true
----
-
 # Notebook reproducible script for Botany 563
 
 ### Installation
