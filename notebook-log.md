@@ -21,5 +21,4 @@ $ where conda
 7. Within MAFFT, the command "mafft --localpair --maxiterate 1000 trnL_sequences.fasta > trnL_aligned.fasta" will be run. This was found at: https://manpages.debian.org/jessie/mafft/mafft-linsi.1.
 - The assumptions of this method are that the sequences come from the same gene.
 - This method is limited by speed - it takes a long time to run, and if the sequences do not match properly then inferring homology is limited.
-- Descriptions of the command: L-INS-i: probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information)
-
+- Descriptions of the command: L-INS-i: probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information
