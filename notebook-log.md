@@ -13,4 +13,11 @@ I am going to work with several species from the Cupressaceae family: Calocedrus
 ```shell
 $ where conda
 ```
-5. 
+5. Install MAFFT from https://mafft.cbrc.jp/alignment/software/windows_without_cygwin.html following the steps for Windows 64
+6. Then checked by running:
+   ```shell
+   $ where MAFFT
+  ```
+7. Within MAFFT, the command "mafft --localpair --maxiterate 1000 trnL_sequences.fasta > trnL_aligned.fasta" will be run. This was found at: https://manpages.debian.org/jessie/mafft/mafft-linsi.1.
+- The assumptions of this method are that the sequences come from the same gene.
+- This method is limited by speed - it takes a long time to run, and if the sequences do not match properly then inferring homology is limited.  
