@@ -18,6 +18,7 @@ $ where conda
    ```shell
    $ where MAFFT
   ```
+###Alignment
 7. Within MAFFT, the command "mafft --localpair --maxiterate 1000 sequences.fasta > aligned.fasta" will be run. This was found at: https://manpages.debian.org/jessie/mafft/mafft-linsi.1.
 Software - MAFFT
 Description- MAFFT is a program used for multiple sequence alignment of nucleotides or amino acids (proteins). 
@@ -29,7 +30,8 @@ Assumptions - Sequences are homologous, and the inputted gap penalties/scoring m
 
 8. MAFFT was opened manually. The windows key was pressed to start a search, and then I typed cmd and pressed enter. I then changed the directory to my computer by running cd C:\Users\andre\Downloads. Then, MAFFT was run by mafft sequences.fasta > aligned.fasta. The alignment was then created as FASTA_output.
 
-9. Following the methods from the "Distance/Parsiomny methods (Part 3: computer lab)" from the Botany 563 Course website, I created a basic NJ tree from the R packages ape and phangorn.
+###Beginning Trees 
+9. Following the methods from the "Distance/Parsiomny methods (Part 3: computer lab)" from the Botany 563 Course website, I created a basic NJ tree from the R packages ape and phangorn by substituting out the sample dataset for my own. 
 Software - Ape 
 Description - An R package used for a variety of functions to do basic phylogenetic tree manipulation and visualization, but namely it can be used to estimate distance-based trees. 
 Strengths - Easy to use in R/R studio. Supports a variety of tree formats and includes distance based tree building such as Neighbor-joining. It can also integrate with other R packages easily. 
