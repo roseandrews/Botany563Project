@@ -17,7 +17,7 @@ $ where conda
 6. Then checked by running:
    ```shell
    $ where MAFFT
-  ```
+```
 ###Alignment
 7. Within MAFFT, the command "mafft --localpair --maxiterate 1000 sequences.fasta > aligned.fasta" will be run. This was found at: https://manpages.debian.org/jessie/mafft/mafft-linsi.1.
 Software - MAFFT
