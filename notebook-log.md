@@ -109,10 +109,5 @@ Final p-score 420 after  2 nni operations
 
 plot(tre.pars, cex=0.6)
 
-MATK tree:
-<img width="875" height="540" alt="image" src="https://github.com/user-attachments/assets/8ca36b79-bf94-4b4b-b96e-91e518605669" />
-
-Rps4 tree:
-<img width="875" height="540" alt="image" src="https://github.com/user-attachments/assets/be22b04d-129b-4bbf-bcfb-c6d8a1c3131f" />
 
 
