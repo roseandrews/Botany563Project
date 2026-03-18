@@ -110,5 +110,64 @@ Final p-score 420 after  2 nni operations
 
 plot(tre.pars, cex=0.6)
 
+### RAxML
+Software - RAxML
+Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
+Strengths - Good for large datasets, is accurate and produces robust trees, and implements bootstrap values.
+Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
+Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
+User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
 
+I click on Download Download 64-bit Linux binary and I download C:\Users\Rose\Downloads\raxml-ng_v2.0.0_linux_x86_64.zip. 
+
+cd C:\Users\Rose\Downloads\raxml-ng_v2.0.0_linux_x86_64.zip. 
+ls ## check the raxml-ng executable is there
+cp raxml-ng 
+
+First, we will check the alignment:
+raxml-ng --check --msa primatesAA-aligned-muscle.fasta --model LG+G8+F
+
+And then we find the ML tree:
+raxml-ng --msa primatesAA-aligned-muscle.fasta --model LG+G8+F
+
+RAxML produces the following output files:
+Best ML tree saved to: primatesAA-aligned-muscle.fasta.raxml.bestTree
+All ML trees saved to: primatesAA-aligned-muscle.fasta.raxml.mlTrees
+Optimized model saved to: primatesAA-aligned-muscle.fasta.raxml.bestModel
+Execution log saved to: primatesAA-aligned-muscle.fasta.raxml.log
+
+We can do a quick and dirty plot in R:
+library(ape)
+tre = read.tree(file="primatesAA-aligned-muscle.fasta.raxml.bestTree")
+plot(tre)
+
+It is not enough to estimate the ML tree, we also want to do non-parametric bootstrapping. We call this non-parametric bootstrapping because we resample our alignment columns with replacement and rebuild trees many times to see which clades are consistently recovered.
+
+We use the flag --all to run both ML and bootstrap:
+raxml-ng --all --msa primatesAA-aligned-muscle.fasta --model LG+G8+F --bs-trees 10 --prefix primatesAA-aligned-muscle-raxml-boostrap
+We are only doing 10 bootstrap replicates for the sake of time, but we should always try to do at least 100. We need to choose a new prefix because it doesn’t let us overwrite the previous raxml output files.
+
+The output file we are interested in is:
+Best ML tree with Felsenstein bootstrap (FBP) support values saved to: primatesAA-aligned-muscle-raxml-boostrap.raxml.support
+
+We can do a quick and dirty plot in R:
+library(ape)
+tre = read.tree(file="primatesAA-aligned-muscle-raxml-boostrap.raxml.support")
+plot(tre)
+nodelabels(tre$node.label)
+
+First, we note that the tree does not seem to be rooted correctly.
+
+very important
+
+Maximum likelihood methods are uncapable of inferring the place of the root. We always have to root the estimated tree afterwards with an outgroup.
+
+library(ape)
+tre = read.tree(file="primatesAA-aligned-muscle-raxml-boostrap.raxml.support")
+plot(tre)
+nodelabels()
+
+rtre = root(tre, node=33, resolve.root=TRUE)
+plot(rtre)
+nodelabels(rtre$node.label)
 
