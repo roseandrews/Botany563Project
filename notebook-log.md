@@ -165,6 +165,7 @@ nodelabels()
 rtre = root(tre, node=33, resolve.root=TRUE)
 
 ### MrBayes
+Description - Software used for Bayesian inferences using MCMC methods to estimate posterior distributions. Strengths - Provides 
 I downloaded MrBayes from https://nbisweden.github.io/MrBayes/. I chose the option for Windows: MrBayes-3.2.7-WIN.zip. 
 
 I then created a mrbayes block in a text file named mbblock.txt. I then added mcmc;sumt; at the end of the file. 
