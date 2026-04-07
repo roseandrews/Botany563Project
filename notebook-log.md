@@ -23,9 +23,7 @@ $ where conda
 7. Within MAFFT, the command "mafft --localpair --maxiterate 1000 sequences.fasta > aligned.fasta" will be run. This was found at: https://manpages.debian.org/jessie/mafft/mafft-linsi.1.
 Software - MAFFT
 Description- MAFFT is a program used for multiple sequence alignment of nucleotides or amino acids (proteins). 
-Strengths -
-   Of the program overall: Can handle a lot of sequences, has many choices of algorithms from fast (FFT-NS-1) to more accuracy based (L-INS-i, G-INS-i).
-   Of chosen command: L-INS-i: probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information.
+Strengths - Of the program overall: Can handle a lot of sequences, has many choices of algorithms from fast (FFT-NS1) to more accuracy based (L-INS-i, G-INS-i). Of chosen command: L-INS-i: probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information.
 Weaknesses - This method is limited by speed - it takes a long time to run, and if the sequences do not match properly then inferring homology is limited.
 Assumptions - Sequences are homologous, and the inputted gap penalties/scoring matrices appropriately match the insertion/deletion process.
 
@@ -62,7 +60,7 @@ library(phangorn)
 
 dna <- fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
 
-4) Computing the genetic distances. They choose a Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate (more on Models of Evolution).
+4) Computing the genetic distances. They choose a Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate.
 
 D <- dist.dna(dna, model="TN93")
 
@@ -92,11 +90,11 @@ library(adegenet)
 library(phangorn)
 
 3) Loading the sample data and convert to phangorn object:
-
+(These were the 'toy' data set names - I renamed my files to the same for convenience in coding). 
 dna <- fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
 dna2 <- as.phyDat(dna)
 
-4) We need a starting tree for the search on tree space and compute the parsimony score of this tree (422)
+4) We need a starting tree for the search on tree space and compute the parsimony score of this tree
 
 tre.ini <- nj(dist.dna(dna,model="raw"))
 parsimony(tre.ini, dna2)
@@ -104,7 +102,6 @@ parsimony(tre.ini, dna2)
 5) Search for the tree with maximum parsimony:
 
 > tre.pars <- optim.parsimony(tre.ini, dna2)
-Final p-score 420 after  2 nni operations
 
 6) Plot tree:
 
@@ -141,8 +138,7 @@ library(ape)
 tre = read.tree(file="primatesAA-aligned-muscle.fasta.raxml.bestTree")
 plot(tre)
 
-It is not enough to estimate the ML tree, we also want to do non-parametric bootstrapping. We call this non-parametric bootstrapping because we resample our alignment columns with replacement and rebuild trees many times to see which clades are consistently recovered.
-
+Non-parametric bootstrapping:
 We use the flag --all to run both ML and bootstrap:
 raxml-ng --all --msa primatesAA-aligned-muscle.fasta --model LG+G8+F --bs-trees 10 --prefix primatesAA-aligned-muscle-raxml-boostrap
 We are only doing 10 bootstrap replicates for the sake of time, but we should always try to do at least 100. We need to choose a new prefix because it doesn’t let us overwrite the previous raxml output files.
@@ -166,8 +162,28 @@ library(ape)
 tre = read.tree(file="primatesAA-aligned-muscle-raxml-boostrap.raxml.support")
 plot(tre)
 nodelabels()
-
 rtre = root(tre, node=33, resolve.root=TRUE)
-plot(rtre)
-nodelabels(rtre$node.label)
 
+### MrBayes
+I downloaded MrBayes from https://nbisweden.github.io/MrBayes/. I chose the option for Windows: MrBayes-3.2.7-WIN.zip. 
+
+I then created a mrbayes block in a text file named mbblock.txt. I then added mcmc;sumt; at the end of the file. 
+
+I then ran this block: 
+begin mrbayes;
+ set autoclose=yes;
+ prset brlenspr=unconstrained:exp(10.0);
+ prset shapepr=exp(1.0);
+ prset tratiopr=beta(1.0,1.0);
+ prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
+ lset nst=2 rates=gamma ngammacat=4;
+ mcmcp ngen=10000 samplefreq=10 printfreq=100 nruns=1 nchains=3 savebrlens=yes;
+ outgroup HEFO;
+ mcmc;
+ sumt;
+end;
+
+After, I added the MrBayes Block to my nexus file. 
+cat algaemb.nex mbblock.txt > algaemb-mb.nex
+
+and ran MrBayes: mb algaemb-mb.nex
