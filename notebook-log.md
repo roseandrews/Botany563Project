@@ -171,7 +171,7 @@ I downloaded MrBayes from https://nbisweden.github.io/MrBayes/. I chose the opti
 
 I then created a mrbayes block in a text file named mbblock.txt. I then added mcmc;sumt; at the end of the file. 
 
-I then ran this block: 
+I added this block: 
 begin mrbayes;
  set autoclose=yes;
  prset brlenspr=unconstrained:exp(10.0);
@@ -180,12 +180,10 @@ begin mrbayes;
  prset statefreqpr=dirichlet(1.0,1.0,1.0,1.0);
  lset nst=2 rates=gamma ngammacat=4;
  mcmcp ngen=10000 samplefreq=10 printfreq=100 nruns=1 nchains=3 savebrlens=yes;
- outgroup HEFO;
+ outgroup SESE;
  mcmc;
  sumt;
 end;
 
-After, I added the MrBayes Block to my nexus file. 
-cat algaemb.nex mbblock.txt > algaemb-mb.nex
-
-and ran MrBayes: mb algaemb-mb.nex
+To each of my nexus files manually. I opened MrBayes by typing C:\Users\andre\Downloads\MrBayes-3.2.7-WIN\MrBayes-3.2.7-WIN\bin\mb.3.2.7-win32.exe
+into the command prompt. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total). 
