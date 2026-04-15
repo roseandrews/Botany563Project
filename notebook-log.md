@@ -45,65 +45,55 @@ Weaknesses - The run time is slow.
 Assumptions - That sequences follow a specified substitution model, sites evolve independently, and that your initial alignment is correct. 
 
 Steps copied below:
-1) Installing necessary packages:
+10. Installed necessary packages:
 
 install.packages("adegenet", dep=TRUE)
 install.packages("phangorn", dep=TRUE)
 
-2) Loading the packages
+11. Loaded the packages
 
 library(ape)
 library(adegenet)
 library(phangorn)
 
-3) Loading the sample data
+12. Loaded the sample data
 
 dna <- fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
 
-4) Computing the genetic distances. They choose a Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate.
+13. Computing the genetic distances. They choose a Tamura and Nei 1993 model which allows for different rates of transitions and transversions, heterogeneous base frequencies, and between-site variation of the substitution rate.
 
 D <- dist.dna(dna, model="TN93")
 
-5) Get the NJ tree
+14. Created the NJ tree
 
 tre <- nj(D)
 
-6) Before plotting, we can use the ladderize function which reorganizes the internal structure of the tree to get the ladderized effect when plotted
+15. Before plotting, I used the ladderize function which reorganizes the internal structure of the tree to get the ladderized effect when plotted
 
 tre <- ladderize(tre)
 
-7) We can plot the tree
+16. Plotted the tree
 
 plot(tre, cex=.6)
 title("A simple NJ tree")
 
 And then:
-1) Installing necessary packages (if you have not installed them for the distance section above)
 
-install.packages("adegenet", dep=TRUE)
-install.packages("phangorn", dep=TRUE)
-
-2) Loading
-
-library(ape)
-library(adegenet)
-library(phangorn)
-
-3) Loading the sample data and convert to phangorn object:
+17. Loaded the sample data and convert to phangorn object:
 (These were the 'toy' data set names - I renamed my files to the same for convenience in coding). 
 dna <- fasta2DNAbin(file="http://adegenet.r-forge.r-project.org/files/usflu.fasta")
 dna2 <- as.phyDat(dna)
 
-4) We need a starting tree for the search on tree space and compute the parsimony score of this tree
+18. Created a starting tree for the search on tree space and compute the parsimony score of this tree
 
 tre.ini <- nj(dist.dna(dna,model="raw"))
 parsimony(tre.ini, dna2)
 
-5) Search for the tree with maximum parsimony:
+19. Searched for the tree with maximum parsimony:
 
 > tre.pars <- optim.parsimony(tre.ini, dna2)
 
-6) Plot tree:
+20. Plotted the tree:
 
 plot(tre.pars, cex=0.6)
 
@@ -115,63 +105,66 @@ Weaknesses - Computationally intensive and does not guarantee the correct local 
 Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
 User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
 
-I click on Download Download 64-bit Linux binary and I download C:\Users\Rose\Downloads\raxml-ng_v2.0.0_linux_x86_64.zip. 
+21. I click on Download 64-bit Linux binary and I downloaded at C:\Users\Rose\Downloads\raxml-ng_v2.0.0_linux_x86_64.zip. 
 
+22. Then I ran:
 cd C:\Users\Rose\Downloads\raxml-ng_v2.0.0_linux_x86_64.zip. 
 ls ## check the raxml-ng executable is there
 cp raxml-ng 
 
-First, we will check the alignment:
-raxml-ng --check --msa primatesAA-aligned-muscle.fasta --model LG+G8+F
+23.
+Checked the alignment of each of my files (5 separate file names like the one below):
+raxml-ng --check --msa MATK-aligned.fasta --model LG+G8+F
 
-And then we find the ML tree:
-raxml-ng --msa primatesAA-aligned-muscle.fasta --model LG+G8+F
+24. And then found the ML tree:
+raxml-ng --msa MATK-aligned.fasta --model LG+G8+F
 
-RAxML produces the following output files:
-Best ML tree saved to: primatesAA-aligned-muscle.fasta.raxml.bestTree
-All ML trees saved to: primatesAA-aligned-muscle.fasta.raxml.mlTrees
-Optimized model saved to: primatesAA-aligned-muscle.fasta.raxml.bestModel
-Execution log saved to: primatesAA-aligned-muscle.fasta.raxml.log
+RAxML produced the following output files:
+Best ML tree saved to: MATK-aligned.fasta.raxml.bestTree
+All ML trees saved to: MATK-aligned.fasta.raxml.mlTrees
+Optimized model saved to: MATK-aligned.fasta.raxml.bestModel
+Execution log saved to: MATK-aligned.fasta.raxml.log
 
-We can do a quick and dirty plot in R:
+25. Created a quick plot in R:
 library(ape)
-tre = read.tree(file="primatesAA-aligned-muscle.fasta.raxml.bestTree")
+tre = read.tree(file="MATK-aligned.fasta.raxml.bestTree")
 plot(tre)
 
-Non-parametric bootstrapping:
-We use the flag --all to run both ML and bootstrap:
-raxml-ng --all --msa primatesAA-aligned-muscle.fasta --model LG+G8+F --bs-trees 10 --prefix primatesAA-aligned-muscle-raxml-boostrap
-We are only doing 10 bootstrap replicates for the sake of time, but we should always try to do at least 100. We need to choose a new prefix because it doesn’t let us overwrite the previous raxml output files.
+### IQTree
+I compared all of my trees created in RAxML to the ones in IQTree. 
+Software - IQTree
+Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
+Strengths - Good for large datasets, is accurate and produces robust trees, implements bootstrap values, and incorporates model selection through ModelFinder.
+Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
+Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
+User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
 
-The output file we are interested in is:
-Best ML tree with Felsenstein bootstrap (FBP) support values saved to: primatesAA-aligned-muscle-raxml-boostrap.raxml.support
-
-We can do a quick and dirty plot in R:
+26. I downloaded IQTree from: https://iqtree.github.io/ and chose "Download v3.1.1 for Windows."
+27. I opened IQTree in the Command Prompt by inputting C:\Users\andre\Downloads\iqtree-3.1.0-Windows\bin\iqtree3.exe -s.
+28. I then specified the file name (completed 5 times by modifying the path to the correct name each time) C:\Users\andre\Downloads\iqtree-3.1.0-Windows\iqtree-3.1.0-Windows\bin>.\iqtree3.exe -s "C:\Users\andre\OneDrive\lena tree data\MATK_aligned.fasta" -m LG+G -bb 1000
+29. This then produced the files:
+   IQ-TREE report:               MATK_aligned.fasta.iqtree
+  Maximum-likelihood tree:       MATK_aligned.fasta.treefile
+  Likelihood distances:          MATK_aligned.fasta.mldist
+  Screen log file:               MATK_aligned.fasta.log
+30. I then created a plot in R from the tree file with bootstrap values in R studio:
 library(ape)
-tre = read.tree(file="primatesAA-aligned-muscle-raxml-boostrap.raxml.support")
-plot(tre)
-nodelabels(tre$node.label)
-
-First, we note that the tree does not seem to be rooted correctly.
-
-very important
-
-Maximum likelihood methods are uncapable of inferring the place of the root. We always have to root the estimated tree afterwards with an outgroup.
-
-library(ape)
-tre = read.tree(file="primatesAA-aligned-muscle-raxml-boostrap.raxml.support")
+tre = read.tree(file="MATK_aligned.fasta.treefile")
 plot(tre)
 nodelabels()
-rtre = root(tre, node=33, resolve.root=TRUE)
+
+rtre = root(tre, node=31, resolve.root=TRUE)
+plot(rtre)
+nodelabels(rtre$node.label)
 
 ### MrBayes
 Description - Software used for Bayesian inferences using MCMC methods to estimate posterior distributions. Strengths - Provides posterior probabilities, supports a lot of models (GTR, HKY), can combine molecular and morphological data. Weaknesses - MCMC can be slow. Assumptions - Data is from homologous genes. User choices - How many times the program runs.
 
-I downloaded MrBayes from https://nbisweden.github.io/MrBayes/. I chose the option for Windows: MrBayes-3.2.7-WIN.zip. 
+31. I downloaded MrBayes from https://nbisweden.github.io/MrBayes/. I chose the option for Windows: MrBayes-3.2.7-WIN.zip. 
 
-I then created a mrbayes block in a text file named mbblock.txt. I then added mcmc;sumt; at the end of the file. 
+32. I then created a mrbayes block in a text file named mbblock.txt. I then added mcmc;sumt; at the end of the file. 
 
-I added this block: 
+33. I added this block: 
 begin mrbayes;
  set autoclose=yes;
  prset brlenspr=unconstrained:exp(10.0);
@@ -185,5 +178,9 @@ begin mrbayes;
  sumt;
 end;
 
-To each of my nexus files manually. I opened MrBayes by typing C:\Users\andre\Downloads\MrBayes-3.2.7-WIN\MrBayes-3.2.7-WIN\bin\mb.3.2.7-win32.exe
-into the command prompt. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total). 
+To each of my nexus files manually. 
+
+34. I opened MrBayes by typing C:\Users\andre\Downloads\MrBayes-3.2.7-WIN\MrBayes-3.2.7-WIN\bin\mb.3.2.7-win32.exe
+into the command prompt.
+
+35. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total).
