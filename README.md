@@ -5,19 +5,25 @@ Provides the goal of the project clearly stated
 
 This tree shows the phylogenetic relationships of several species from the Cupressaceae family: Calocedrus decurrens, Sequoia sempervirens, Hesperocyparis abramsiana, Hesperocyparis forbesii, Hesperocyparis macnabiana, Juniperus occidentalis, and Juniperus osteosperma. 
 
-Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the xylem in gymnosperms. It is going to be assessed if variation in leaf morphology and tranfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits correlates with relationships between species, or is more environmentally specific. 
-
-This project is focused on the physiological function of transfusion tracheids in these species. I am testing if variation in leaf morphology and transfusion tracheids influences these species leaf hydraulic traits and responses to drought stress. The phylogeny of these species will be used in linear mixed models to help me to disentangle if alterations/trends in the leaf hydraulics measurements are related to their transfusion tracheids or other leaf traits, or if trends are because phylogenetically closely related species have trait values. I will also use it to test for phylogenetic signal of various leaf traits, most notably transfusion tissue areas and leaf hydraulic conductance, using metrics such as Bloomberg’s K and/or Pagels Lambda. 
+Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the xylem in gymnosperms. It is going to be assessed if variation in leaf morphology and tranfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits are more environmentally or physiologically correlated. 
 
 ### Methods
 provides data description: where it came from, size, characteristics
-- Data was obtained from GenBank (sources will be listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast and ribosomal sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) and downloaded the FASTA files for each. 
+- Data was obtained from GenBank (sources will be listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast and ribosomal sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) and (1) downloaded the FASTA files for each. 
 - The number of base pairs per sequence varied:
   - matK: ~1524 bp
   - trnV intron: ~518 bp
   - rps4-trnS: ~768 bp
   - trnL-trnF: ~770 bp
   - trnK-matK: ~626 bp
+2) I then aligned the data using MAFFT (Katoh, Kazutaka and Standley, Daron M. MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability. Mol Biol Evol. 2013 Jan 16;30(4):772–780. doi: 10.1093/molbev/mst010.)
+- MAFFT Description - MAFFT is a program used for multiple sequence alignment of nucleotides or amino acids (proteins).
+- Strengths/Choices - Of the program overall: Can handle a lot of sequences, has many choices of algorithms from fast (FFT-NS1) to more accuracy based (L-INS-i, G-INS-i). Of chosen command: L-INS-i: probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information.
+- Weaknesses - This method is limited by speed - it takes a long time to run, and if the sequences do not match properly then inferring homology is limited.
+- Assumptions - Sequences are homologous, and the inputted gap penalties/scoring matrices appropriately match the insertion/deletion process.
+
+3) Beginning Trees were created using the R packages ape and phangorn. 
+
 provides for every step in the pipeline: 1) name of the software, 2) reference, 3) short description of the method, 4) short description of strengths (why chosen?), 5) short description of weaknesses/limitations, 5) short description of the main assumptions of the method, 6) user choices (parameters that you had to choose and how)
 
 ### Results
