@@ -22,7 +22,8 @@ provides data description: where it came from, size, characteristics
 - Weaknesses - This method is limited by speed - it takes a long time to run, and if the sequences do not match properly then inferring homology is limited.
 - Assumptions - Sequences are homologous, and the inputted gap penalties/scoring matrices appropriately match the insertion/deletion process.
 
-3) Beginning NJ Trees were created using the R packages ape and phangorn. 
+3) Beginning NJ Trees were created using the R packages ape and phangorn.
+   
 Software - Ape 
 - Description - An R package used for a variety of functions to do basic phylogenetic tree manipulation and visualization, but namely it can be used to estimate distance-based trees. 
 - Strengths - Easy to use in R/R studio. Supports a variety of tree formats and includes distance based tree building such as Neighbor-joining. It can also integrate with other R packages easily. 
