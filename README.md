@@ -24,39 +24,39 @@ provides data description: where it came from, size, characteristics
 
 3) Beginning NJ Trees were created using the R packages ape and phangorn. 
 Software - Ape 
-Description - An R package used for a variety of functions to do basic phylogenetic tree manipulation and visualization, but namely it can be used to estimate distance-based trees. 
-Strengths - Easy to use in R/R studio. Supports a variety of tree formats and includes distance based tree building such as Neighbor-joining. It can also integrate with other R packages easily. 
-Weaknesses - It has limited phylogenetic inference methods and isn't as optimized for large datasets compared to phangorn.
-Assumptions - Assumes that the tree manipulation has the correct topology input.
-User choices - NA
+- Description - An R package used for a variety of functions to do basic phylogenetic tree manipulation and visualization, but namely it can be used to estimate distance-based trees. 
+- Strengths - Easy to use in R/R studio. Supports a variety of tree formats and includes distance based tree building such as Neighbor-joining. It can also integrate with other R packages easily. 
+- Weaknesses - It has limited phylogenetic inference methods and isn't as optimized for large datasets compared to phangorn.
+- Assumptions - Assumes that the tree manipulation has the correct topology input.
+- User choices - NA
 
 Software - phangorn 
-Description - An R package used for a variety of functions such as phylogenetic reconstruction using maximum likelihood and parsimony methodologies. 
-Strengths - Easy to use in R, supports many substitution models (GTR, HKY, etc.), can run bootstrap support, and parsimony analyses.
-Weaknesses - The run time is slow.
-Assumptions - That sequences follow a specified substitution model, sites evolve independently, and that your initial alignment is correct. 
+- Description - An R package used for a variety of functions such as phylogenetic reconstruction using maximum likelihood and parsimony methodologies. 
+- Strengths - Easy to use in R, supports many substitution models (GTR, HKY, etc.), can run bootstrap support, and parsimony analyses.
+- Weaknesses - The run time is slow.
+- Assumptions - That sequences follow a specified substitution model, sites evolve independently, and that your initial alignment is correct. 
 
 4) I then use RAxML and IQTree to create 5 separate trees for each set of sequences using maximum likelihood methods.
 Software - RAxML
-Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
-Strengths - Good for large datasets, is accurate and produces robust trees, and implements bootstrap values.
-Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
-Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
-User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
+- Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
+- Strengths - Good for large datasets, is accurate and produces robust trees, and implements bootstrap values.
+- Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
+- Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
+- User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
 
 Software - IQTree
-Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
-Strengths - Good for large datasets, is accurate and produces robust trees, implements bootstrap values, and incorporates model selection through ModelFinder.
-Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
-Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
-User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
+- Description -  Software used for maximum likelihood methods, and can be run with protein or amino acid sequences.
+- Strengths - Good for large datasets, is accurate and produces robust trees, implements bootstrap values, and incorporates model selection through ModelFinder.
+- Weaknesses - Computationally intensive and does not guarantee the correct local optima is chosen.
+- Assumptions - The correct model of evolution is specified, all sites evolve independently, each branch evolves independently, and that sequences are homologous.
+- User choices - Substitution model, partitioning scheme, bootstrap settings, number of ML trees created.
 
 5) I then used MrBayes to estimate Bayesian inferences of posterior distributions using MCMC methods.
-Description - Software used for Bayesian inferences using MCMC methods to estimate posterior distributions.
-Strengths - Provides posterior probabilities, supports a lot of models (GTR, HKY), can combine molecular and morphological data.
-Weaknesses - MCMC can be slow.
-Assumptions - Data is from homologous genes.
-User choices - How many times the program runs.
+- Description - Software used for Bayesian inferences using MCMC methods to estimate posterior distributions.
+- Strengths - Provides posterior probabilities, supports a lot of models (GTR, HKY), can combine molecular and morphological data.
+- Weaknesses - MCMC can be slow.
+- Assumptions - Data is from homologous genes.
+- User choices - How many times the program runs.
 
 provides for every step in the pipeline: 1) name of the software, 2) reference, 3) short description of the method, 4) short description of strengths (why chosen?), 5) short description of weaknesses/limitations, 5) short description of the main assumptions of the method, 6) user choices (parameters that you had to choose and how)
 
