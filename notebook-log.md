@@ -184,3 +184,6 @@ To each of my nexus files manually.
 into the command prompt.
 
 35. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total).
+
+###Astral
+36. I downloaded Astral from https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial-template.md#running-on-the-sample-mammalian-dataset. 
