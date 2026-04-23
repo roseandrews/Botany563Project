@@ -185,5 +185,34 @@ into the command prompt.
 
 35. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total).
 
-###Astral
-36. I downloaded Astral from https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial-template.md#running-on-the-sample-mammalian-dataset. 
+### Astral
+36. I downloaded Astral from https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial-template.md#running-on-the-sample-mammalian-dataset.
+37. I compiled each .tre files of for my 5 genes from IQtree, and combined the Newick formatted trees into one document called all_gene_trees.tre. 
+38. I then ran C:\Users\andre>java -jar "C:\Users\andre\Downloads\Astral.5.7.8\Astral\astral.5.7.8.jar" ^
+More? -i "C:\Users\andre\OneDrive\lena tree data\all_gene_trees.tre" ^
+More? -o "C:\Users\andre\OneDrive\lena tree data\species_tree.tre" in Windows Command Prompt to run Astral.
+39. I then plotted the output in R studio using this code:
+ ```{R}
+library(ape)
+# read tree
+tree <- read.tree("C:/Users/andre/OneDrive/lena tree data/species_tree_3genes.tre")
+# ---- relabel tips using translate table ----
+tree$tip.label <- c(
+  "CADE",  # 1
+  "SESE",  # 2
+  "HEAB",  # 3
+  "HEFO",  # 4
+  "HEMA",  # 5
+  "JUOC",  # 6
+  "JUOS"   # 7
+)
+# ---- root using SESE ----
+tree_rooted <- root(tree, outgroup = "SESE", resolve.root = TRUE)
+# ---- plot ----
+plot(ladderize(tree_rooted),
+     main = "ASTRAL Species Tree (Rooted on SESE)",
+     cex = 0.9)
+# optional: node labels (support values)
+nodelabels(tree_rooted$node.label, col = "red", cex = 0.8)
+```
+    
