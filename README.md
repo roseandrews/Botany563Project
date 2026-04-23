@@ -59,6 +59,14 @@ Software - IQTree
 - Assumptions - Data is from homologous genes.
 - User choices - How many times the program runs.
 
+6) I then used Astral to combine the 5 gene trees.
+-  Software - Astral
+- Description - Coalescent based method for inferring species trees from multiple gene trees. 
+- Strengths - Fast, scalable, and statistically consistent.
+- Weaknesses - Sensitive to gene tree error and prior mistakes in the pipeline.
+- Assumptions - Gene trees are correctly built and that there is no recombination within loci. 
+- User Choices - Rooting, gene tree inputs, and filtering of present genes. 
+
 provides for every step in the pipeline: 1) name of the software, 2) reference, 3) short description of the method, 4) short description of strengths (why chosen?), 5) short description of weaknesses/limitations, 5) short description of the main assumptions of the method, 6) user choices (parameters that you had to choose and how)
 
 ### Results
@@ -73,6 +81,7 @@ provides measures of support to the tree
 - RAxML: Kozlov, A.M, Darriba, D., Flouri, T., Morel, B., Stamatakis, A. RAxML-NG: a fast, scalable and user-friendly tool for maximum likelihood phylogenetic inference, Bioinformatics, Volume 35, Issue 21, November 2019, Pages 4453–4455, https://doi.org/10.1093/bioinformatics/btz305.
 - IQTree: Nguyen, L-T., Schmidt, H. A., von Haeseler, A., Minh, B. Q. IQ-TREE: A Fast and Effective Stochastic Algorithm for Estimating Maximum-Likelihood Phylogenies, Molecular Biology and Evolution, Volume 32, Issue 1, January 2015, Pages 268–274, https://doi.org/10.1093/molbev/msu300
 - MrBayes: Ronquist, F., Teslenko, M., van der Mark, P., Ayres, D. L., Darling, A., Höhna, S., Larget, B., Liu, L., Suchard, M. A., Huelsenbeck, J. P. MrBayes 3.2: Efficient Bayesian Phylogenetic Inference and Model Choice Across a Large Model Space, Systematic Biology, Volume 61, Issue 3, May 2012, Pages 539–542, https://doi.org/10.1093/sysbio/sys029
+- Astral: https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial-template.md#running-on-the-sample-mammalian-dataset.
 
 Calocedrus decurrens:
 - matK: Cheng, Y., Nicolson, R.G., Tripp,K. and Chaw, S.M. Phylogeny of taxaceae and cephalotaxaceae genera inferred from chloroplast matK gene and nuclear rDNA ITS region. Mol. Phylogenet. Evol. 14 (3), 353-365 (2000).
