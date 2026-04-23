@@ -70,6 +70,9 @@ Software - IQTree
 provides for every step in the pipeline: 1) name of the software, 2) reference, 3) short description of the method, 4) short description of strengths (why chosen?), 5) short description of weaknesses/limitations, 5) short description of the main assumptions of the method, 6) user choices (parameters that you had to choose and how)
 
 ### Results
+All results of IQTree and Astral can be found at this link: https://docs.google.com/document/d/1Pbk99NNbKAXw8DGiwlLSt01qsIn_fBv5ltRwBESizBA/edit?tab=t.0.
+
+
 provides estimated tree with some discussion on the original biological question from the introduction
 
 provides measures of support to the tree
