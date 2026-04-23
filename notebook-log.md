@@ -186,6 +186,12 @@ into the command prompt.
 35. I then ran MrBayes > execute "C:\Users\andre\OneDrive\lena tree data\MATK_aligned_NEX.nex" and substituted out each NEX file for each gene (5 total).
 
 ### Astral
+Software - Astral
+Description - Coalescent based method for inferring species trees from multiple gene trees. 
+Strengths - Fast, scalable, and statistically consistent.
+Weaknesses - Sensitive to gene tree error and prior mistakes in the pipeline.
+Assumptions - Gene trees are correctly built and that there is no recombination within loci. 
+User Choices - Rooting, gene tree inputs, and filtering of present genes. 
 36. I downloaded Astral from https://github.com/smirarab/ASTRAL/blob/master/astral-tutorial-template.md#running-on-the-sample-mammalian-dataset.
 37. I compiled each .tre files of for my 5 genes from IQtree, and combined the Newick formatted trees into one document called all_gene_trees.tre. 
 38. I then ran C:\Users\andre>java -jar "C:\Users\andre\Downloads\Astral.5.7.8\Astral\astral.5.7.8.jar" ^
