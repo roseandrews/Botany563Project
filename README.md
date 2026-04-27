@@ -9,7 +9,7 @@ Several physiological functions of these species have been measured. Most import
 
 ### Methods
 provides data description: where it came from, size, characteristics
-- Data was obtained from GenBank (sources listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast and ribosomal sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) for all 7 species and (1) downloaded the FASTA files for each. 
+- Data was obtained from GenBank (sources listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast marker sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) for all 7 species and (1) downloaded the FASTA files for each. 
 - The number of base pairs per sequence varied:
   - matK: ~1524 bp
   - trnV intron: ~518 bp
