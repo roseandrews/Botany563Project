@@ -1,14 +1,13 @@
 # Botany563Project
-### Introduction
-Provides enough biological background for non-experts to understand the significance of the work
-Provides the goal of the project clearly stated
+### Abstract
+This phylogeny summarizes the relationships of seven conifer species in the Cupressaceae family that have been analyzed for physiological traits of hydraulic conductivity and transfusion tracheids. Starting sequences of 5 chloroplast genes (matK, trnV intron, rps4-trnS, trnL-trnF, trnK-matK) were obtained from Genbank and aligned in the software MAFFT. The aligned sequences were then used to create separate gene trees in the following softwares: MrBayes, IQTree, and ape/phangorn in R studio. All gene trees were then coalesced using Astral, which did not work super effectively due to a low number of genes present. Ultimately, the most appropriate gene tree due to maximum bootstrap support, genera clustering together properly, and coordinated physiological responses was from the gene matK in MrBayes. 
 
+### Introduction
 This tree shows the phylogenetic relationships of several species from the Cupressaceae family: Calocedrus decurrens, Sequoia sempervirens, Hesperocyparis abramsiana, Hesperocyparis forbesii, Hesperocyparis macnabiana, Juniperus occidentalis, and Juniperus osteosperma. 
 
-Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the xylem in gymnosperms. It is going to be assessed if variation in leaf morphology and tranfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits are more environmentally or phylogenetically correlated. 
+Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the leaf xylem in gymnosperms. It is going to be assessed if variation in leaf morphology and tranfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits are more environmentally or phylogenetically correlated. 
 
 ### Methods
-provides data description: where it came from, size, characteristics
 - Data was obtained from GenBank (sources listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast marker sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) for all 7 species and (1) downloaded the FASTA files for each. 
 - The number of base pairs per sequence varied:
   - matK: ~1524 bp
@@ -72,10 +71,12 @@ provides for every step in the pipeline: 1) name of the software, 2) reference, 
 ### Results
 All results of IQTree and Astral can be found at this link: https://docs.google.com/document/d/1Pbk99NNbKAXw8DGiwlLSt01qsIn_fBv5ltRwBESizBA/edit?tab=t.0.
 
+The most appropriate final tree is the matK MrBayes Tree. There are high levels of nodal support by bootstrapping, with 2 clades at 100 (JUOC - Juniperus occidentalis, JUOS - Juniperus osteosperma; and HEMA - Hesperocyparis abramsiana, HEFO - Hesperocyparis forbesii, HEMA - Hesperocyparis macnabiana) and 2 splits in topology also at 100. There is one outgroup at the root between SESE - Sequioa sempervirens and CADE - Calocedrus decurrens. This is what I would expect to see, as the different genera are clustering properly together and the two outgroups are accurately displayed. 
 
-provides estimated tree with some discussion on the original biological question from the introduction
+### Discussion
+The conclusion of my finding show that the one of physiological traits I measured is coordinated phylogenetically, but not both. Each clade has species with similar amounts of transfusion tracheids, but varying levels of hydraulic conductivities. This shows that the cellular level traits within the leaf are likely structural, and have a genetic component inducing a similar pattern in the leaf. Whereas, the hydraulic conductivity, the amount of water that can move through the stem, seems to be more environmentally respondent. This makes sense, as the longterm effects of drought insight the development of thicker cell walls in the xylem. So, within similar genera or sister species, the responses of how much water can move depends on how much continuous water they are supplied. Plants with high levels of water will have less resistant xylem to hydraulic collapse, as they are not used to drying out, so they'll have lower conductivity. This pattern could even be evident interspecifically. 
 
-provides measures of support to the tree
+I found the most accurate gene level tree from MrBayes with bootstrap support. A major limitation of my study was the low level of species and genes available. This was evident when I ran Astral, as there was effectively not enough data for the software to run properly. In the future, I will be running Beast to see if I can create an accurate coalescent based tree. I also will be continuing to search Genbank for more available genes, optimally ribosomal genes to diversify from only chloroplast genes currently. 
 
 ### Sources
 - MAFFT: Katoh, Kazutaka and Standley, Daron M. MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability. Mol Biol Evol. 2013 Jan 16;30(4):772–780. doi: 10.1093/molbev/mst010.
