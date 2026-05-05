@@ -5,10 +5,10 @@ This phylogeny summarizes the relationships of seven conifer species in the Cupr
 ### Introduction
 This tree shows the phylogenetic relationships of several species from the Cupressaceae family: Calocedrus decurrens, Sequoia sempervirens, Hesperocyparis abramsiana, Hesperocyparis forbesii, Hesperocyparis macnabiana, Juniperus occidentalis, and Juniperus osteosperma. 
 
-Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the leaf xylem in gymnosperms. It is going to be assessed if variation in leaf morphology and tranfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits are more environmentally or phylogenetically correlated. 
+Several physiological functions of these species have been measured. Most importantly, this work focuses on the presence of transfusion tracheids, which are specialized cells that aid in effective movement of water within the leaf xylem in gymnosperms. The objective of this work is to assess if variation in leaf morphology and transfusion tracheid presence influence efficiency in handling drought stress. The phylogeny will be used to determine if trends in leaf hydraulic conductivity and other physiological traits are more environmentally or phylogenetically correlated. This work is significant as this specific sampling of species have not been compared to each other previously. 
 
 ### Methods
-- Data was obtained from GenBank (sources listed below). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast marker sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) for all 7 species and (1) downloaded the FASTA files for each. 
+- Data was obtained from GenBank (all sources listed below in "Sources" section). Data accessions were from several different papers, each contributing different sequence markers. I compiled a list of 5 chloroplast marker sequences available for all species (matK, rps4-trnS, trnV intron, trnL-trnF, and trnK-matK) for all 7 species and (1) downloaded the FASTA files for each. 
 - The number of base pairs per sequence varied:
   - matK: ~1524 bp
   - trnV intron: ~518 bp
@@ -67,7 +67,7 @@ Software - IQTree
 - User Choices - Rooting, gene tree inputs, and filtering of present genes. 
 
 ### Results
-All results of IQTree and Astral can be found at this link: https://docs.google.com/document/d/1Pbk99NNbKAXw8DGiwlLSt01qsIn_fBv5ltRwBESizBA/edit?tab=t.0.
+All results from NJ, IQTree, and Astral can be found at this link: https://docs.google.com/document/d/1Pbk99NNbKAXw8DGiwlLSt01qsIn_fBv5ltRwBESizBA/edit?tab=t.0.
 
 The most appropriate final tree is the matK MrBayes Tree. There are high levels of nodal support by bootstrapping, with 2 clades at 100 (JUOC - Juniperus occidentalis, JUOS - Juniperus osteosperma; and HEMA - Hesperocyparis abramsiana, HEFO - Hesperocyparis forbesii, HEMA - Hesperocyparis macnabiana) and 2 splits in topology also at 100. There is one outgroup at the root between SESE - Sequioa sempervirens and CADE - Calocedrus decurrens. This is what I would expect to see, as the different genera are clustering properly together and the two outgroups are accurately displayed. 
 
